@@ -23,9 +23,9 @@ class MyLocationApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.amber,
       ),
-      home: const MyHomePage(title: 'Flutter Location Demo'),
+      home: const MyHomePage(title: 'Location Demo'),
     );
   }
 }
@@ -106,13 +106,13 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'Press the button to get your location from GPS:',
             ),
-            Text(
+            SelectableText(
               _position,
             ),
-            Text(
+            SelectableText(
               _timestamp,
             ),
-            Text(
+            SelectableText(
               _altitude,
             ),
           ],
