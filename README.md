@@ -1,6 +1,6 @@
 # testgps
 
-A new Flutter project.
+A Flutter project to test GPS location.
 
 ## Getting Started
 
@@ -14,3 +14,12 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Geolocation in Android
+
+add the following in file `android/app/src/main/AndroidManifest.xml`
+
+```
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+```
