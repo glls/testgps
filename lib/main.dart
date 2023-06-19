@@ -25,7 +25,7 @@ class MyLocationApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Location Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Location Demo'),
     );
   }
 }
@@ -50,6 +50,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String _position = '';
+  String _altitude = '';
+  String _timestamp = '';
 
   Future<void> _getPosition() async {
     Position pos = await _determinePosition();
@@ -61,6 +63,9 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _position = pos.toString();
+      String alt = pos.altitude.toStringAsFixed(2);
+      if (alt.isNotEmpty) _altitude = '$alt meters';
+      _timestamp = pos.timestamp!.toIso8601String();
     });
   }
 
@@ -99,11 +104,16 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'Press the button to get your Location:',
+              'Press the button to get your location from GPS:',
             ),
             Text(
               _position,
-              style: Theme.of(context).textTheme.headline4,
+            ),
+            Text(
+              _timestamp,
+            ),
+            Text(
+              _altitude,
             ),
           ],
         ),
@@ -111,9 +121,8 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _getPosition,
         tooltip: 'Location',
-        child: const Icon(Icons.api),
+        child: const Icon(Icons.gps_not_fixed),
       ),
-
     );
   }
 }
