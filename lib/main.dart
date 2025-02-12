@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _position = pos.toString();
       String alt = pos.altitude.toStringAsFixed(2);
       if (alt.isNotEmpty) _altitude = '$alt meters';
-      _timestamp = pos.timestamp!.toIso8601String();
+      _timestamp = pos.timestamp.toIso8601String();
     });
   }
 
